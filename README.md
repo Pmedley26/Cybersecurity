@@ -93,5 +93,21 @@ Group Policy to Prevent Windows Defender from Running on any Ecorp Nodes
 
   Next Steps: Install and Configure Metaspolitable.
 
-  
+  # What is Metasploitable?
+  - Vulnerable linux Vm developed by Rapid 7
+  - Designed to be a safe environment for vulnerability scanning and penetration testing(Red and Blue Team Median)
+
+# Since this is an already existing VM with a preconfigured Virtual Hard disk, I just need to add it to Virtualbox. Metasploitable runs under Legacy Debian Settings so I have to set it up a bit differently from the other VMs, specifically the network adapter used. This VM will be on the Ecorp Subnet and not the Attacker LAN. 
+
+
+<img width="1842" height="925" alt="Metasploitable Configuration" src="https://github.com/user-attachments/assets/a839bc9b-1c65-48b5-943b-e643ae8c792a" />
+
+
+  # Upon signing in, the VM immediately got an IP address from the Ecorp LAN Subnet
+
+<img width="1513" height="958" alt="Metaspolitable IP Configuration" src="https://github.com/user-attachments/assets/82f73ac6-1b66-46ec-b22f-2435c85b9c99" />
+
+
+Next Steps: Configuring Kali Linux
+
 
