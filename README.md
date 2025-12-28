@@ -1,6 +1,7 @@
 # This README serves as documentation for the Lab Setup and includes the steps taken during the initial setup as well as any changes along the way. 
 
 # Summarized Video Version: https://youtu.be/O_EqyqlHc-M
+# Part 2: Configuring DC  https://youtu.be/HT9EUnJRs7g
 
 
 - Started off by installing Pfsense. I initially had issues installing pfsense through Wifi so I changed to a stable ethernet connection and installed it without issues. The lab Has a Pfsense firewall, a handful of VMs in what’s called the “ECORP” LAN/subnet, and another LAN called the “Attacker LAN”. The Pfsense was configured to have both LANs on on different subnet. I configured the WAN and both LAN interfaces on the Pfsense firewall. The Pfsense firewall has 3 adapters. The first one is for the WAN connection and is configured as a bridged adapter which allows it to connect to my home router for IP distribution and internet access. The other two adapters will be used to connect to the other LANs from the firewall. 
@@ -70,4 +71,27 @@
 
 # Next Steps are to add the Domain Controller to the Lab by Installing Windows Server 2025 Evaluation and Installing Active Directory on it. 
 
+- The DC was configured as the Root Certificate authority for the domain. A static IP was also given to the server as best practice. 
+
+
+<img width="1887" height="970" alt="Certificate Authority Ecorp DC" src="https://github.com/user-attachments/assets/e9ec0ca3-3257-40a6-89e0-e67297a6ede2" />
+
+# User Accounts and Service Account
+
+<img width="1872" height="1006" alt="AD Users and Service Account" src="https://github.com/user-attachments/assets/d3781c3b-784c-49ff-8016-890e339b000e" />
+
+
+Group Policy to Prevent Windows Defender from Running on any Ecorp Nodes
+
+
+<img width="1046" height="755" alt="Group Policy" src="https://github.com/user-attachments/assets/59776a3f-8940-47c7-9b85-a78deb9c5166" />
+
+
+# Additional Steps: 
+- Added Windows 11 VM to the Domain
+- Added a Service Principal name to the SQL Service Account
+
+  Next Steps: Install and Configure Metaspolitable.
+
+  
 
