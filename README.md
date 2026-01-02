@@ -110,4 +110,50 @@ Group Policy to Prevent Windows Defender from Running on any Ecorp Nodes
 
 Next Steps: Configuring Kali Linux
 
+# Installed Kali Linux and Assigned it to the Attack LAN. It obtained an IP address on 10.0.3 subnet as specified in the Pfsense configuration through DHCP
+
+
+Final Steps For Lab Setup: Install Sysmon on Windows 11
+
+# What is sysmon? 
+- A windows system service and device driver
+- Monitors and Logs system activity to the Windows Event Log
+- It is a very useful tool for Identifying suspicious activity and knowing what processes, files, etc are involved in a potential cyber incident.
+
+
+#  Sysmon has a configuration file which determines which logs and activity are monitored/logged and accessed through Event Viewer. 
+- Installed Sysmon from official Microsoft link, then grabbed a configuration file needed for the purpose of the lab. 
+- Navigated to sysmon directory using cmd and entered the following command
+- Sysmon.exe -accepteula -i sysmonconfig.xml
+
+- <img width="1890" height="981" alt="Sysmon Logs" src="https://github.com/user-attachments/assets/3d70bace-44c8-41d5-8f17-f5570265447f" />
+
+Next Steps: Install Splunk on Windows 11 VM. 
+
+# What is Splunk? 
+- Used to collect, search, analyze, and visualize machine generated data.
+- Splunk is often used for Log Management, Security and Event Management across IT and Security teams globally. 
+- SIEM = Security Information and Event Management, Similar to Microsoft Sentinel.
+
+
+# Splunk Installation
+
+- Installed splunk from the official website link, configuring all of this on the VM and not setting up forwarders or a centralized splunk server to make the lab easier to configure
+
+- Installed Splunk Add-On for Sysmon
+
+- Also Installing the Add-On for Microsoft Windows. 
+
+- Afterwards, I went to Settings, Data Inputs, and Enabled Remote Log collections. 
+
+- I Ran the CMD and entered IP config on the Windows 11VM, which splunk should’ve ingested. 
+
+<img width="1888" height="1003" alt="Splunk Log Example" src="https://github.com/user-attachments/assets/f0e6a891-0142-495c-8a40-fdf52cc42ed6" />
+
+
+# This completes the Lab Setup and the End of the Readme. There is another Readme in the same repository that will be using this setup for future Lab demonstrations
+
+# Thank you for taking the time to view the ReadMe as well as Watch the Videos. My goal for this is to demonstrate my expertise in the field of cybersecurity, as well as show my eagerness to learn and develop my skillset.
+
+
 
