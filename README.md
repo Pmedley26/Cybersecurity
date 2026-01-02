@@ -3,6 +3,8 @@
 # Summarized Video Version: https://youtu.be/O_EqyqlHc-M
 # Part 2: Configuring DC  https://youtu.be/HT9EUnJRs7g
 
+# Part 3(Final): https://www.youtube.com/watch?v=QlcXdttQFqQ
+
 
 - Started off by installing Pfsense. I initially had issues installing pfsense through Wifi so I changed to a stable ethernet connection and installed it without issues. The lab Has a Pfsense firewall, a handful of VMs in what’s called the “ECORP” LAN/subnet, and another LAN called the “Attacker LAN”. The Pfsense was configured to have both LANs on on different subnet. I configured the WAN and both LAN interfaces on the Pfsense firewall. The Pfsense firewall has 3 adapters. The first one is for the WAN connection and is configured as a bridged adapter which allows it to connect to my home router for IP distribution and internet access. The other two adapters will be used to connect to the other LANs from the firewall. 
 
