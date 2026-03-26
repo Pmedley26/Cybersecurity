@@ -153,7 +153,6 @@ Next Steps: Install Splunk on Windows 11 VM.
 <img width="1888" height="1003" alt="Splunk Log Example" src="https://github.com/user-attachments/assets/f0e6a891-0142-495c-8a40-fdf52cc42ed6" />
 
 
-# This completes the Lab Setup and the End of the Readme. There is another Readme in the same repository that will be using this setup for future Lab demonstrations
 
 # Thank you for taking the time to view the ReadMe as well as Watch the Videos. My goal for this is to demonstrate my expertise in the field of cybersecurity, as well as show my eagerness to learn and develop my skillset.
 
