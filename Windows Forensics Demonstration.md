@@ -1,7 +1,7 @@
 # Windows Forensics Demonstration
 
 
-In the following Demonstration, I will be demonstrating how do generate and collect Windows Artifacts from a Vmware VM with Windows Installed on it. I'll be simulating a Script Execution Attack From Atomic Red Team(Blue Cape) and using a tool called gkape to collect the artifacts. There will also be a video demonstration. 
+In the following Demonstration, I will be going through how do generate and collect Windows Artifacts from a Vmware VM with Windows Installed on it. I'll be simulating a Script Execution Attack From Atomic Red Team(Blue Cape) and using a tool called gkape to collect the artifacts. There will also be a video demonstration. 
 
 # Who or What is Atomic Red Team?
 # https://www.atomicredteam.io/
@@ -21,21 +21,22 @@ The Kape Software is what I'll use to collect and export the Artifact informatio
 
 
 # Timestamps
-Timestands are a fundamental yet crucial aspect of Windows Forensics that allows us to establish a timeline on Cybersecurity Incidents
-Each File System has its own nuance for how it handles timestamps and updates. 
+- Timestands are a fundamental yet crucial aspect of Windows Forensics that allows us to establish a timeline on Cybersecurity Incidents. 
+- Each File System has its own nuance for how it handles timestamps and updates. 
 
 
 For the NTFS filesystem, the following rules apply: 
-M = Content Modification
-A = File Access Time
-C = Metadata Change Time(MFT record moditifations)
-B = Birth Time(File Creation Time)
+- M = Content Modification
+- A = File Access Time
+- C = Metadata Change Time(MFT record moditifations)
+- B = Birth Time(File Creation Time)
 
 
 
 # MFT Record
-MFT stands for Master File Table
-It is a crucial component of NTFS as it serves as a Master Database for all files and directories stored on a windows system that contains an NTFS volume. 
+- MFT stands for Master File Table
+- It is a crucial component of NTFS as it serves as a Master Database for all files and directories stored on a windows system that contains an NTFS volume. 
+
 Key Features: 
 - MetaData Storage
 - Indexing
@@ -49,5 +50,77 @@ Key Features:
 
 
 
-When a file is deleted in NTFS, it's actually the entry in the Master File Table that's deleted from the disk, not the file itself. 
-Each MFT entry is 1024 bits
+- When a file is deleted in NTFS, it's actually the entry in the Master File Table that's deleted from the disk, not the file itself. 
+- Each MFT entry is 1024 bits
+
+
+# Analyzing the MFT in the Home Lab
+
+In the Lab VM, Navigated to EzTools in the vmware VM. 
+
+Ran the following Command: 
+
+MFTECmd.exe -f C:\Users\Elliot\Desktop\Kape_Out\C\$MFT --csv C:\Users\Elliot\Desktop\Case_Files\File_System --csvf MFT.csv
+
+This essentially parses the MFT to make it human readable, otherwise the information wouldn’t be usable. 
+
+<img width="1706" height="873" alt="Creating MFT" src="https://github.com/user-attachments/assets/f546d2dc-58d7-4f9e-94f7-b85774d7c10f" />
+
+
+
+# A very useful tool for analyzing MFT files is Timeline Explorer:
+
+<img width="1698" height="868" alt="Timeline Explorer" src="https://github.com/user-attachments/assets/e309df9f-2b30-44dc-b326-eccb657218e5" />
+
+
+Here, I decided to look for entries pertaining to the powershell script I ran before from Atomic Red Team: 
+
+<img width="1696" height="840" alt="Time Explorer ART Entry" src="https://github.com/user-attachments/assets/189485e7-d406-4c69-a2bd-4c774f7993c2" />
+
+
+Where this becomes useful is that you can see when files were originally created, deleted, modified, etc. Unfortunately however, removing these entries in the MFT only requires the file to be simply deleted from the system, however, the files can be recovered.
+
+# Another useful tool is the USN Journal($): 
+- It keeps track of whenever a file is modified. 
+- USN stands for Update Sequence Number. 
+- It provides data showing the operations performed on files
+- This provides more than just a simple timestamp when the last operation of a given type was performed
+- It captures significantly more operation types than just MACB. 
+- It may include references to operations on deleted files. 
+
+
+We can use the same command MFTECmd.exe -f C:\Users\Elliot\Desktop\Kape_Out\C\$MFT --csv C:\Users\Elliot\Desktop\Case_Files\File_System --csvf MFT.csv
+
+To parse the USN Journal as well. There are a couple differences in how we’ll run the command though: 
+
+>MFTECmd.exe -f C:\Users\Elliot\Desktop\Kape_Out\C\$Extend\$J -m  C:\Users\Elliot\Desktop\Kape_out\C\$MFT --csv C:\Users\Elliot\Desktop\Case_Files\File_System --csvf $J.csv
+
+Atomic Red Team has this file called Deleteme_ that I’m going to use to demonstrate the useful information you can find from the $USN journal. 
+
+
+<img width="1711" height="876" alt="USN Journal" src="https://github.com/user-attachments/assets/9fed1525-b1bd-4c6b-ada6-77835edd1d5f" />
+
+
+
+As you can see, it shows 3 different timestamps, but provides update reasons, such as when the file was created, and when the file was deleted. 
+
+Taking Note of the Event ID, i’ll now perform some additional analysis. I’ll use the same command from above, but this time, I’ll filter out by that particular event ID
+
+MFTECmd.exe -f C:\Users\Elliot\Desktop\Kape_Out\C\$MFT —de 334357
+
+In the screenshot below, this tells us that the Event ID for this particular file has already been overwritten in NTFS: 
+
+
+
+<img width="1420" height="897" alt="Event 334357" src="https://github.com/user-attachments/assets/b78997d5-7499-410a-8e9a-418a18112c22" />
+
+
+Next Steps: Registry Artifacts. 
+
+
+
+
+
+
+
+
