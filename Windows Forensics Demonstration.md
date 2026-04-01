@@ -44,6 +44,7 @@ Key Features:
 - MFT Zone
 - Alternate Data Streams
 
+<img width="1919" height="1079" alt="Structure of an MFT file record" src="https://github.com/user-attachments/assets/b3764955-e9e5-4098-a1dc-3b967ee30d42" />
 
 
 
