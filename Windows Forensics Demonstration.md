@@ -115,8 +115,11 @@ In the screenshot below, this tells us that the Event ID for this particular fil
 <img width="1420" height="897" alt="Event 334357" src="https://github.com/user-attachments/assets/b78997d5-7499-410a-8e9a-418a18112c22" />
 
 
-Next Steps: Registry Artifacts. 
+Next Steps: Windows Registry Artifacts. 
 
+# What is the Windows Registry? 
+- You can think of the registry as a database of all user and system configurations. It contains elements called "Hives" and "Keys" that store both user specific and system specific configuration changes.
+- This becomes valuable during incident response and forensic investigation
 
 
 
