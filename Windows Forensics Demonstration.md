@@ -121,6 +121,17 @@ Next Steps: Windows Registry Artifacts.
 - You can think of the registry as a database of all user and system configurations. It contains elements called "Hives" and "Keys" that store both user specific and system specific configuration changes.
 - This becomes valuable during incident response and forensic investigation
 
+# Root Keys
+There are 5 root keys(Hives) in Windows: 
+- HKEY_CURRENT_USER: This key holds settings for the currently logged-on user, such as folder preferences and Control Panel Configurations. 
+- HKEY_USERS
+- HKEY_LOCAL_MACHINE
+- HKEY_CLASSES_ROOT: Merges data from HKEY_Local_Machine\Software\Classes and Hkey_Current_User\Software\Classes for file associations. 
+- HKEY_CURRENT_CONFIG
+
+
+$NTUser.dat and UseClass.dat store files that contain user-specific registry data, including evidence of software use and file access. 
+
 
 
 
