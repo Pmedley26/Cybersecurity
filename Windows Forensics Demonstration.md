@@ -133,8 +133,16 @@ There are 5 root keys(Hives) in Windows:
 $NTUser.dat and UseClass.dat store files that contain user-specific registry data, including evidence of software use and file access. 
 
 
+# Windows Run Keys: 
+- Another type of registry Key
+- One associated with the user, and another with the system. 
+- If an entry is placed  in the run key associated with the system, then it will run each time the system is booted. For the user run key, each time the user logs in, the file is going to run
+- This leaves concerns about a potential persistence mechanism being left by a threat actor
+
+  Below you'll see an example of a Run Key that was created using the Atomic Red Team Script from Earlier in the Lab. 
 
 
 
+<img width="1900" height="1002" alt="NtUser Run Keys" src="https://github.com/user-attachments/assets/f7d17366-8441-4fd7-b9f9-d7769dc5f5e1" />
 
 
