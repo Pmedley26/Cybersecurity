@@ -121,6 +121,36 @@ Next Steps: Windows Registry Artifacts.
 - You can think of the registry as a database of all user and system configurations. It contains elements called "Hives" and "Keys" that store both user specific and system specific configuration changes.
 - This becomes valuable during incident response and forensic investigation
 
+# Lab Tools
+- For this section of the Lab I used Registry Explorer and RegRipper
+- These tools were very useful for viewing Registry Keys in Human Readable Format for Investigative Purposes.
+
+
+# Registry Explorer
+- This software allows me to load registry Hives into the software both live and offline for further analysis on individual Keys
+- I was able to view each of the Hives above and look at the various system and user level keys.
+- Below is an image of the default Registry Explorer Interface, and Two Hives Associated with the SOFTWARE and NTUser.DAT Registry Hive
+
+# What is a "Dirty Hive?"
+ - A dirty hive is an indication that a hive may not be up to date due to Transaction Logs not being imported over
+ - Transaction logs are logs that service as the intermediary between the current state of the Registry Keys and Changes about to be made to them
+ - Once imported, the Keys will then be up to date, allowing for more accurate, detailed forensic analysis and investigation.
+ - Beyond understanding Operating System Telemetry, Making sure the data you're viewing is as accurate as possible is crucial when dealing with critical assets, especially Insider and Customer Data!
+   
+<img width="1901" height="897" alt="Registry Explorer" src="https://github.com/user-attachments/assets/de7a1616-bf7e-413d-87cd-08185e4b04f9" />
+
+
+Next Steps: Windows Services Keys. 
+
+# RegRipper
+- This tool was used to take the output of the initial Registry Hive Telemetry and Convert it into a Human Readable Format.
+- I used the CMD tool, but it does have a GUI tool.
+
+  <img width="1908" height="982" alt="RegRipper" src="https://github.com/user-attachments/assets/79cdb525-4c9b-45ed-bae2-749582f62ae5" />
+- There isn't much to see in the image above, but the following Command: for /r %i in (*) do (C:\Users\Elliot\Desktop\Tools\RegRipper3.0-master\rip.exe -r %i -a > %i.txt)
+- To loop through each of the Registry Hives and used a program called rip.exe to convert them to human readable syntax. 
+
+
 # Root Keys
 There are 5 root keys(Hives) in Windows: 
 - HKEY_CURRENT_USER: This key holds settings for the currently logged-on user, such as folder preferences and Control Panel Configurations. 
