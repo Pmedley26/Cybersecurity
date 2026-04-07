@@ -191,3 +191,19 @@ $NTUser.dat and UseClass.dat store files that contain user-specific registry dat
 
 
 # Prefetch Files 
+- Speeds up the startup of applications
+- Cached data related to applications
+- They leave timestamps just like any other artifact
+- They primarily exist for the experience but can also be abused by attackers. 
+- By default on Windows Workstations, Prefetch is installed and accessible under the SYSTEM hive under prefetch parameters
+
+The VM has a built in tool for parsing prefetch artifacts. I'll also be using Timeline Explorer to view the timeline of the prefetch files as well. 
+
+   <img width="1902" height="922" alt="Prefetch Parameters" src="https://github.com/user-attachments/assets/ea94d402-b916-4499-b5cc-769c1e672183" />
+
+- Looking at the Image Below, we get a list of events that took place during the time the attack took place.
+- Processes such as Powershell.exe, Whoami.exe, and Hostname.exe are all common initial reconnaissance methods used by attackers to determine what permissions they may already have, and what resources they can immediately exploit, and what the attack surface is your an organization. 
+
+  <img width="1908" height="993" alt="Prefetch artifacts" src="https://github.com/user-attachments/assets/b6150c68-e2b9-4261-8646-481264119d79" />
+
+
