@@ -182,4 +182,12 @@ $NTUser.dat and UseClass.dat store files that contain user-specific registry dat
 
 
 # Scheduled Task Key
+- Found in the Software Hive
+- Navigated to SOFTWARE_clean: Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree
+- There is a MITRE attack Technique number of T1053 discovered in the artifacts. This TTP is linked to Scheduled Tasks. 
+- https://attack.mitre.org/techniques/T1053/
 
+<img width="1885" height="988" alt="MITRE Attack T1053" src="https://github.com/user-attachments/assets/dc3ae5cd-8de5-4b56-9ade-47585ea31266" />
+
+
+# Prefetch Files 
