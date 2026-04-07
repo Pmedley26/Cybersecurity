@@ -140,8 +140,6 @@ Next Steps: Windows Registry Artifacts.
 <img width="1901" height="897" alt="Registry Explorer" src="https://github.com/user-attachments/assets/de7a1616-bf7e-413d-87cd-08185e4b04f9" />
 
 
-Next Steps: Windows Services Keys. 
-
 # RegRipper
 - This tool was used to take the output of the initial Registry Hive Telemetry and Convert it into a Human Readable Format.
 - I used the CMD tool, but it does have a GUI tool.
@@ -175,4 +173,13 @@ $NTUser.dat and UseClass.dat store files that contain user-specific registry dat
 
 <img width="1900" height="1002" alt="NtUser Run Keys" src="https://github.com/user-attachments/assets/f7d17366-8441-4fd7-b9f9-d7769dc5f5e1" />
 
+
+# Windows Services
+- The Script also created and launched a service called "AtomicRedService"
+- We can also Use Registry Explorer to Locate this service
+
+<img width="1896" height="1021" alt="Atomic Test Service" src="https://github.com/user-attachments/assets/b92a2be8-c7aa-42bf-a89a-749a76f227b7" />
+
+
+# Scheduled Task Key
 
