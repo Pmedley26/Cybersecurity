@@ -211,5 +211,97 @@ The VM has a built in tool for parsing prefetch artifacts. I'll also be using Ti
 - Offer a timestamped history of user activity
 - Can help understand behavior by recording activity within the system. 
 - This Artifact is located under HKEY_Current_user\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist
+- The example below shows that gkape from earlier and powershell was opened. As a reminder. Gkape is the gui form of kape. 
 
+<img width="1702" height="735" alt="Windows User Assist" src="https://github.com/user-attachments/assets/b43f7647-22fa-4834-bd74-b0afd81be123" />
+
+
+# RecentDocs
+- Tracks user activity by providing insights into files and folders accessed by the user
+- Stored in the REGISTRY UNDER SOFTWARE KEYS
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+- The MRU represents the document order from most recent to least recent. 
+- RecentDocs has a limited number of entries, so older entries are overwritten by newer ones as files are accessed. 
+
+
+
+
+# Windows Shell Bags
+- A feature used to remember the settings and view preferences for folders. 
+- If the original files or folders are no longer on the system, the shell bag information remains. 
+- They are a set of registry keys that store information about folders viewed through Windows Explorer. 
+- They track the user’s folder preferences, such as view settings, sizes, and positions.
+- There is a tool called Shellbags Explorer in the VM that allows me to view this
+
+<img width="1898" height="1071" alt="Shell Bag and Shellbad-Explorer" src="https://github.com/user-attachments/assets/53d3d812-78fd-4193-b3f3-3f012b6b71c4" />
+
+
+
+
+
+# Background Activity Monitor
+- Introduced in Windows 10 version 1803
+- Manages activity of background applications
+- Records metadata of background application executions
+- Stored in a Windows Registry Key under the system’s hive
+- It records the path to executables as well as the last run time. 
+- BAM data is stored in the Windows Registry under the key:
+- HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\bam\\State\\UserSettings\\<User SID>
+
+
+
+
+# Windows ShimCache
+- Evidence of program execution even when other logs have been tampered with
+- Shimcache is designed to maintain compatibility of older software with newer versions of windows. It tracks executables that have been run on the system, -recording key details such as file paths and timestamps. 
+- Found in the SYSTEM Hive
+- Shimcache is only written to when the system is shut down. 
+
+- Shim Cache data is stored in the Windows Registry at:
+- For Windows XP through Windows 7: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\AppCompatCache
+- For Windows 8 and later: HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\AppCompatCache\\AppCompatCache
+- We can also use another Eric Zimmerman tool call AppCompatParse. Navigate to where the Zimmerman tools are store and run the following command and it will produce a csv.
+- AppCompatCacheParser.exe -f C:\\Users\\Elliot\\Desktop\\Case_Files\\Clean_Registry_Hives\\SYSTEM_clean --csv C:\\Users\\Elliot\\Desktop\\Case_Files\\Execution
+
+
+
+
+
+# Browser Forensics
+- Used gkape to collect browser forensic artifacts as well. 
+- Can be used for Evidence Collection, User Activity Analysis, Malware Analysis, Incident Reconstruction, Digital Footprint Analysis, and Legal Compliance and Documentation
+
+
+
+# Google Chrome Forensics: 
+Chromium browsers store all of the browser data in SQLite Databases
+Used a tool called DB browser, which is a SQLite reader
+
+
+<img width="1906" height="998" alt="DB Browser for SQLite" src="https://github.com/user-attachments/assets/41658195-2264-4860-903a-210eb4d465d8" />
+
+
+There is another tool that’s used to actually view the last_visit_time in the VM called decode. This allows me to manually copy the timestamp and have it decoded into a more human-readable format. 
+
+More useful information includes the Visits Table and the URLs table, which can give insights as to what links someone accessed, and even the time they visited the link and for how long they visited the link. 
+
+
+<img width="927" height="475" alt="Decode Software" src="https://github.com/user-attachments/assets/b1e47d0f-10a4-457f-b1f5-7ce94bd36c87" />
+
+
+# Hindsight: 
+- Another forensics tool designed specifically for analyzing web browser history. It is commonly used by digital forensic investigators and security professionals to extract, parse, and analyze historical data from web browsers, including Chrome and Edge. 
+- It is a command line tool
+- hindsight.exe -i "C:\Users\Elliot\Desktop\Kape_Out\C\Users\Elliot\AppData\Local\Google\Chrome\User Data" -o C:\Users\Elliot\Desktop\Case_Files\WebBrowser\Chrome
+Output viewed with EZViewer
+
+
+# Browsing History View By Nirsoft:
+- The last  tool I used for collecting Browser Artifacts, even from multiple users at once.
+
+<img width="1901" height="987" alt="Browsing History View" src="https://github.com/user-attachments/assets/4f84e196-2fd8-4e08-aa82-4c43e95166a2" />
+
+
+
+# Next Steps: Memory Analysis 
 
