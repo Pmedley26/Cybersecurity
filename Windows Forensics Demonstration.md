@@ -206,4 +206,10 @@ The VM has a built in tool for parsing prefetch artifacts. I'll also be using Ti
 
   <img width="1908" height="993" alt="Prefetch artifacts" src="https://github.com/user-attachments/assets/b6150c68-e2b9-4261-8646-481264119d79" />
 
+# Windows User Assist:  
+- Tracks the execution of GUI based applications by users
+- Offer a timestamped history of user activity
+- Can help understand behavior by recording activity within the system. 
+- This Artifact is located under HKEY_Current_user\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist
+
 
