@@ -337,19 +337,24 @@ Output viewed with EZViewer
  # DLL List: 
 - This will list all the loaded DLLs for a given process based on the information pulled from memory.
 - python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.dlllist --pid 1740 > \Users\Elliot\Desktop\Case_Files\Memory\dlllist_pid1740(notepad).txt
+- Interestingly enough, I wasn't able to find any malicous DLLs that were loaded from the attack script using this tool, but I have another tool for this. 
 
 
 
 # Malfind: 
 - It finds hidden or injected code in different processes
 - python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.malfind > \Users\Elliot\Desktop\Case_Files\Memory\malfind.txt
-It scans the memory of a process and predicts if the process may include some form of malicious code. 
+- It scans the memory of a process and predicts if the process may include some form of malicious code.
+- Similar to above, I have another tool for this 
+  
 
 
 
 # Get SIDs. 
 - Used to display the security identifier(User accounts) associated with each process. 
 - python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.getsid --pid 6652 7664 1740 >\Users\Elliot\Desktop\Case_Files\Memory\pid_6652_7664_1740.txt
+
+<img width="1723" height="922" alt="SID output" src="https://github.com/user-attachments/assets/cf1d1627-677f-4938-a289-56eb4e9c1700" />
 
  # Print-Keys
  - python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.registry.printkey --key AtomicRedTeam >\Users\Elliot\Desktop\Case_Files\Memory\reg_AtomicRedTeam.txt
