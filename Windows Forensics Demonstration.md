@@ -305,3 +305,63 @@ Output viewed with EZViewer
 
 # Next Steps: Memory Analysis 
 
+# First Tool: Volatility(Command Line Tool)
+- Ran dumpIt.exe then outputed to a memory dump file (Elliot.raw)
+- I’ll be using the following command: 
+ python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.info >\users\Elliot\Desktop\Case_Files\Memory\systeminfo.txt
+- The command is pointed to the memory capture from earlier of elliot.raw, then the plugin called windows.info is being ran so it gathers general info about the Windows OS from the memory capture, then it’ll write this information to a txt file(systeminfo.txt)
+
+
+
+
+2nd Module: PStree
+This displayed a process tree of all running processes that were running at the time that the memory acquisition took place. 
+ python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.pstree >\users\Elliot\Desktop\Case_Files\Memory\pstree.txt
+This information is useful for identifying malicious processes, including both child and parent processes to gather evidence and identify threat actor intent. 
+
+PSList: 
+SImilar to PStree, but can focus on a specific process. 
+To demonstrate, I’ll use process 5232
+ python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.pslist –pid 5232 >\users\Elliot\Desktop\Case_Files\Memory\pid5232.txt
+
+
+Process Dumping: 
+A process can be dumped onto the disk from memory using the following command: 
+python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.pslist --pid 3700(splunk) --dump
+
+3rd Module: DLL List
+This will list all the loaded DLLs for a given process based on the information pulled from memory.
+python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.dlllist --pid 1740 > \Users\Elliot\Desktop\Case_Files\Memory\dlllist_pid1740(notepad).txt
+
+
+
+4th Module: Malfind
+It finds hidden or injected code in different processes
+python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.malfind > \Users\Elliot\Desktop\Case_Files\Memory\malfind.txt
+It scans the memory of a process and predicts if the process may include some form of malicious code. 
+
+
+
+5th Module: Get SIDs. 
+Used to display the security identifier(User accounts) associated with each process. 
+python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.getsid --pid 6652 7664 1740 >\Users\Elliot\Desktop\Case_Files\Memory\pid_6652_7664_1740.txt
+
+6th Module: Print-Keys
+ python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.registry.printkey --key AtomicRedTeam >\Users\Elliot\Desktop\Case_Files\Memory\reg_AtomicRedTeam.txt
+Displays the contents of a registry key within a memory dump
+Examines values and subkeys registered under specific registry keys
+
+
+Next Steps: MemProcFS
+Virtual file system that allows you to access the memory of running processes
+It presents a file based interface to the memory of each process, allowing us to view the read and write regions, process memory maps, interact with the memory of running processes using standard file operations, etc. 
+Ran using the following command  python vol.py -f \Users\Elliot\Desktop\Case_Files\Memory\Elliot.raw windows.info >\users\Elliot\Desktop\Case_Files\Memory\systeminfo.txt
+Running this command actually mapped a drive onto the device that enabled that file-system like memory analysis mentioned above. 
+There are numerous artifacts that can be analyzed similarly to what what demonstrated above with Volatility3
+
+
+
+
+
+Next Steps: Recovering Deleted Files from a NTFS File System: 
+
