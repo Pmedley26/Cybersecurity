@@ -1,7 +1,9 @@
 # Windows Forensics Demonstration
 
 
-In the following Demonstration, I will be going through how do generate and collect Windows Artifacts from a Vmware VM with Windows Installed on it. I'll be simulating a Script Execution Attack From Atomic Red Team(Blue Cape) and using a tool called gkape to collect the artifacts. There will also be a video demonstration. 
+In the following Demonstration, I will be going through how do generate and collect Windows Artifacts from a Vmware VM with Windows Installed on it. I'll be simulating a Script Execution Attack From Atomic Red Team(Blue Cape) and using a tool called gkape to collect the artifacts.
+
+Atomic Red Team Video Demonstration: https://www.youtube.com/watch?v=fs86e00Asbo
 
 # Who or What is Atomic Red Team?
 # https://www.atomicredteam.io/
