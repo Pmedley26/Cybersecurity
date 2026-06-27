@@ -37,5 +37,32 @@ Above you can see the splunk instance created and it's searching through an inde
 
 -The image above shows that 47 vendors have detected this file and marked it malicious. 
 
+# Question 3: There was a cloud drive used to Distribute malware to the endpoint. Which one was it and how do you identify it? 
+
+- This can actually be found in the community section on virustotal, but through splunk, we can pivot from the malware name and the FileCreate Event Code 11
+- index="sysmonsplunklab" Preventivo24.02.14.exe.exe EventCode=11
+
+- <img width="1664" height="762" alt="image" src="https://github.com/user-attachments/assets/ff910187-9f96-44b9-acea-8d51ea8fe61a" />
+
+- We can also look into the surrounding events by filtering the time and selecting +/-5 seconds. This gives us all the events that occured before and after the time the file was written to the disk.
+
+- <img width="1512" height="529" alt="image" src="https://github.com/user-attachments/assets/e825c84b-fd9b-49ce-a79a-928fe930bec1" />
+
+- Moving down to the first event, we see EventCode 22(DNS). After Expanding, we see the DNS query for Dropbox.
+
+- <img width="1617" height="761" alt="image" src="https://github.com/user-attachments/assets/3fd077fa-6e29-4b1a-b979-5c367736e602" />
+
+# Question 4: Attackers will sometimes us a defensive evasion technique where the file creation date is changed to make it appear old. What was the timestamp changed to for a PDF File? 
+
+- Sysmon actually has an Eventcode for this (EventCode 2 Specifically). We can also simply add "PDF" to the end of the query to further filter the results
+- index="sysmonsplunklab" EventCode=2 pdf
+- As seen below, if we expand that event we can see the time was changed to 2024-01-14 08:10:06.029 and timestomping was the technique used.
+- <img width="1383" height="737" alt="image" src="https://github.com/user-attachments/assets/f1f3e3a4-2bf1-4301-b513-68ff1ffd8c37" />
+
+
+
+
+
+
 
 
