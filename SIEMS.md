@@ -13,7 +13,8 @@ Above you can see the splunk instance created and it's searching through an inde
 
 # Scenario: 
 
-“Palo Alto's Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign.”
+“Palo Alto's Unit42 recently conducted research on an UltraVNC campaign, wherein attackers utilized a backdoored version of UltraVNC to maintain access to systems. This lab is inspired by that campaign and guides participants through the initial access stage of the campaign.” 
+- *Please Note, this scenario uses a different dataset than the default one created above*
 
 
 # Question 1: How many Files were Created? How would you find this in splunk?
